@@ -30,7 +30,6 @@
 \ifthenelse{\equal{\DDDR}{}}{}{; \textbf{DR} \DDDR}\\
 %% Deal with optional field immune
 \ifthenelse{\equal{\DDimm}{}}{}{\textbf{Immune} \DDimm\\}
-
 %% Deal with optional field resist
 \ifthenelse{\equal{\DDimm}{}}{}{\textbf{Resist} \DDres%
 \ifthenelse{\equal{\DDSR}{}}{}{; }}%
@@ -40,9 +39,37 @@
 \ifthenelse{\equal{\DDimm}{\DDSR}}{}{\\}
 %% Resistances are mandatory
 \textbf{Fort} \DDfort, \textbf{Ref} \DDref, \textbf{Will} \DDwill\\
-
 %% another optional stat
 \ifthenelse{\equal{\DDweak}{}}{}{\textbf{Weakness} \DDweak\\}
+\raisebox{0.5ex}{\rule{1in}{0.25pt}}\\
+
+%% Advanced combat stats and movement information
+\textbf{Speed} \DDspeed\\
+%% Display each attack as its own line
+%%
+%% Space and Reach
+\textbf{Space} \DDspace; \textbf{Reach} \DDreach\\
+%% Base attack and grapple
+\textbf{Base Atk} \DDbaseAtk; \textbf{Grp} \DDgrapple\\
+%% Deal with optional attack options
+\ifthenelse{\equal{\DDatkOptions}{}}{}{\textbf{Atk options} \DDatkOptions\\}
+%% Deal with optional special actions
+\ifthenelse{\equal{\DDspecAction}{}}{}{\textbf{Special Actions} \DDspecAction\\}
+%% Deal with optional spell like abilities
+\ifthenelse{\equal{\DDspellLikeAbil}{}}{}{\textbf{Spell-Like Abilities (\DDspelLikeAbilCL)\\\DDspellLikeAbil\\}}
+\raisebox{0.5ex}{\rule{1in}{0.25pt}}\\
+
+%% Advanced information
+\textbf{Abilities} Str \DDstr, Dex \DDdex, Con \DDcon, Int \DDint, Wis \DDwis%
+Cha \DDcha\\
+%% Deal with optional special qualities
+\ifthenelse{\equal{\DDsq}{}}{}{\textbf{SQ} \DDsq\\}
+%% Deal with optional feats
+\ifthenelse{\equal{\DDfeats}{}}{}{\textbf{Feats} \DDfeats\\}
+%% Skills
+\textbf{Skills} \DDskills
+%% Deal with optional possesions
+\ifthenelse{\equal{\DDpossesions}{}}{}{\textbf{Possessions} \DDpossesions\\}
 \raisebox{0.5ex}{\rule{1in}{0.25pt}}\\
 
 %% other sections
