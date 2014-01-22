@@ -1,0 +1,52 @@
+\documentclass[10pt]{article}
+\usepackage{ifthen}
+
+%% This is the core statblock for monsters. It is the redesigned statblock
+%% published by WoTC in 2006, the official announcement of the stat block is at
+%% https://www.wizards.com/default.asp?x=dnd/dd/20060707a
+
+\newcommand{\DDstatblocknew}[1]{%
+
+%% statreset.text contains a catalog of every stat command that would ever be
+%% used in a stat block.
+\input{statreset.tex}
+
+\begin{center}\fbox{\begin{minipage}{4.5in}
+
+%% basic info
+\textbf{\MakeUppercase{\DDname} \DDclslvl}\\
+\DDalign\ \DDsize\ \DDtype\ (\DDsubtype)\\
+\textbf{Init} \DDinit; \textbf{Senses} \DDsenses\\
+\textbf{Aura} \DDaura\\
+\textbf{Languages} \DDlang\\
+\raisebox{0.5ex}{\rule{1in}{0.25pt}}\\
+
+%% basic combat stats
+\textbf{AC} \DDAC, \textbf{touch} \DDtouch, \textbf{flat-footed} \DDtouch\\
+\textbf{hp} \DDhp (\DDhd) %
+%% Deal with optional field regeneration
+\ifthenelse{\equal{\DDregen}{}}{}{; \DDregen}%
+%% Deal with optional field damage resistance
+\ifthenelse{\equal{\DDDR}{}}{}{; \textbf{DR} \DDDR}\\
+%% Deal with optional field immune
+\ifthenelse{\equal{\DDimm}{}}{}{\textbf{Immune} \DDimm\\}
+
+%% Deal with optional field resist
+\ifthenelse{\equal{\DDimm}{}}{}{\textbf{Resist} \DDres%
+\ifthenelse{\equal{\DDSR}{}}{}{; }}%
+%% Deal with otional field spell resistance
+\ifthenelse{\equal{\DDSR}{}}{}{\textbf{SR} \DDSR}
+%% Handle the new line
+\ifthenelse{\equal{\DDimm}{\DDSR}}{}{\\}
+%% Resistances are mandatory
+\textbf{Fort} \DDfort, \textbf{Ref} \DDref, \textbf{Will} \DDwill\\
+
+%% another optional stat
+\ifthenelse{\equal{\DDweak}{}}{}{\textbf{Weakness} \DDweak\\}
+\raisebox{0.5ex}{\rule{1in}{0.25pt}}\\
+
+%% other sections
+\hspace*{0.5in}\vdots
+\end{minipage}}\end{center}
+
+}
